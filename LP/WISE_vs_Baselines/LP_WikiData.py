@@ -3,9 +3,9 @@ save = True
 plt.rcParams.update({'font.size': 10})
 # Data with updated category names and colors
 categories = ['DQ','MorsE', 'KG\nWISE']
-total_time = [0,453.7, 2.62]
-hits_at_10 = [0,0.53, 0.38]
-max_ram_usage = [0,3.5, 0.67]
+total_time = [0,430, 1.58]
+hits_at_10 = [0,0.56, 0.5]
+max_ram_usage = [0,3.5, 0.51]
 colors = ['#4c8bf5','#4c8bf4', '#1aa260'] 
 bar_width = 0.8
 Dataset_Name = 'WikiKG Person-Occupation'
@@ -31,7 +31,7 @@ for bar in bars[1:]:
 
 # Plot for Hits@10
 bars = axs[0].bar(categories, hits_at_10, color=colors, width=bar_width)
-axs[0].set_ylim(0, 1)
+axs[0].set_ylim(0, 0.6)
 axs[0].set_title('A. Inference Hits@10',fontsize=12)
 axs[0].set_ylabel('Hits @10',fontsize=12)
 axs[0].margins(x=0.08)

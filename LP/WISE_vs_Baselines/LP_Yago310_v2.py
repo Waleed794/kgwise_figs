@@ -5,10 +5,13 @@ save = True
 
 # Data with updated category names and colors
 categories = ['DQ', 'MorsE',' KG\nWISE']
-total_time = [203.5,10,1.15 ]
-hits_at_10 = [0.01,0.02,0.25,]
+categories_line = ['DQ', 'MorsE',' KG-WISE']
+
+total_time = [49,9.98,0.82 ]
+hits_at_10 = [0.1,0.06,0.32,]
 max_ram_usage = [7.27,0.59,0.53 ]
-colors = ['#4c8bf5','#4c8bf4', '#1aa260'] 
+colors = ['#4c8bf4','#4c8bf4', '#1aa260']  
+colors_line = ['#9c8bff','#4c8bf4', '#1aa260']  
 bar_width = 0.8
 Dataset_Name = 'YAGO3-10 Airport-ConnectsTo'
 
@@ -19,7 +22,7 @@ bars = axs[1].bar(categories, total_time, color=colors, width=bar_width)
 axs[1].set_title('B. Inference Time',fontsize=12)
 axs[1].set_ylabel('Time (sec)',fontsize=12)
 axs[1].margins(x=0.08)
-axs[1].set_ylim(0,250)
+axs[1].set_ylim(0,60)
 axs[1].spines['top'].set_visible(False)
 axs[1].spines['right'].set_visible(False)
 for bar in bars:
@@ -29,7 +32,7 @@ for bar in bars:
 
 # Plot for Hits@10
 bars = axs[0].bar(categories, hits_at_10, color=colors, width=bar_width)
-axs[0].set_ylim(0, 1)
+axs[0].set_ylim(0, 0.6)
 axs[0].set_title('A. Inference Hits@10',fontsize=12)
 axs[0].set_ylabel('Hits @10' ,fontsize=12)
 axs[0].margins(x=0.08)
@@ -45,7 +48,7 @@ bars = axs[2].bar(categories, max_ram_usage, color=colors, width=bar_width)
 axs[2].set_title('C. Inference Memory',fontsize=12)
 axs[2].set_ylabel('Memory (GB)',fontsize=12)
 axs[2].margins(x=0.08)
-axs[2].set_ylim(0,50)
+axs[2].set_ylim(0,10)
 axs[2].spines['top'].set_visible(False)
 axs[2].spines['right'].set_visible(False)
 for bar in bars:
@@ -57,8 +60,8 @@ for bar in bars:
 plt.tight_layout()
 # plt.show()
 if save:
-    # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-    plt.savefig('LP_YAGO310_INF.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+    plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+    # plt.savefig('LP_YAGO310_INF.pdf', dpi=1200,bbox_inches='tight', format='pdf')
 plt.show()
 """ FOR LINE GRAPH """
 
@@ -77,9 +80,9 @@ if True:
     fig, ax = plt.subplots(1, 2, figsize=(6.5, 2))
     
     # Plot lines for each category
-    ax[0].plot(num_targets, morse_time, marker='o', color=colors[0], label=categories[0])
-    ax[0].plot(num_targets, DQ_time, marker='o', color=colors[0], label=categories[0])
-    ax[0].plot(num_targets, kg_wise_time, marker='o', color=colors[2], label=categories[2])
+    ax[0].plot(num_targets, DQ_time, marker='o', color=colors_line[0], label=categories_line[0])
+    ax[0].plot(num_targets, morse_time, marker='o', color=colors_line[1], label=categories_line[1])
+    ax[0].plot(num_targets, kg_wise_time, marker='o', color=colors_line[2], label=categories_line[2])
     
     # Adding titles and labels
     ax[0].set_xlabel('# Target Nodes Queried', fontsize=12)
@@ -107,9 +110,9 @@ if True:
     # fig, ax = plt.subplots(figsize=(5, 3))
     
     # Plot lines for each category
-    ax[1].plot(num_targets, morse_RAM, marker='o', color=colors[0], label=categories[0])
-    ax[1].plot(num_targets, DQ_RAM, marker='o', color=colors[0], label=categories[0])
-    ax[1].plot(num_targets, kg_wise_RAM, marker='o', color=colors[2], label=categories[2])
+    ax[1].plot(num_targets, morse_RAM, marker='o', color=colors_line[1], label=categories_line[1])
+    ax[1].plot(num_targets, DQ_RAM, marker='o', color=colors_line[0], label=categories_line[0])
+    ax[1].plot(num_targets, kg_wise_RAM, marker='o', color=colors_line[2], label=categories[2])
     
     # Adding titles and labels
     # ax[1].set_title('RAM consumed by Each Method Against Number of Targets', fontsize=14)
@@ -124,6 +127,13 @@ if True:
     #     ax[1].text(num_targets[i], v + 0.0, str(v), ha='center', va='bottom')
     # for i, v in enumerate(kg_wise_RAM,):
         # ax[1].text(num_targets[i], v - 0.25, str(v), ha='center', va='bottom')
+    handles, labels = [], []
+
+    h, l = ax[0].get_legend_handles_labels()
+    handles.extend(h)
+    labels.extend(l)    
+    # Create a single legend outside the subplots
+    fig.legend(handles, labels, loc='upper center',ncols=3,bbox_to_anchor=(0.5, 1.11))
     fig.suptitle('YAGO ConnectedTo', fontsize=14,y=0.9)
     if save:
         plt.tight_layout()

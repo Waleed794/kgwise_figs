@@ -29,8 +29,8 @@ fig, ax1 = plt.subplots(1, 1, figsize=(6, 3))  # Adjusted figure size to fit 3 c
 # fig.suptitle(Dataset_Name, fontsize=14, y=0.95)
 
 # 2. Second chart: Time Taken (Inference Time)
-bars1 = ax1.bar(r1, df['KG-TOSA'], color=colors[0], width=bar_width, label='KG-TOSA')
-bars2 = ax1.bar(r2, df['KG-WISE'], color=colors[1], width=bar_width, label='KG-WISE')
+bars1 = ax1.bar(r1, df['KG-TOSA'], color=colors[0], width=bar_width, label='Total Chunks')
+bars2 = ax1.bar(r2, df['KG-WISE'], color=colors[1], width=bar_width, label='Loaded Chunks')
 
 # Add labels and title for the time chart
 # ax1.set_xlabel('# Workers', fontsize=12)
@@ -60,4 +60,5 @@ if True:#_targets == 1600:
 # Set layout adjustments to fit everything neatly
 plt.tight_layout()
 plt.savefig(f'dblp_chunks_2bars.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+# plt.savefig(f'/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/dblp_chunks_2bars.pdf', dpi=1200, bbox_inches='tight',format='pdf')
 plt.show()
