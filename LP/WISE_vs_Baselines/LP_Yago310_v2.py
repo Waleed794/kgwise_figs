@@ -1,6 +1,6 @@
 
 import matplotlib.pyplot as plt
-
+plt.rcParams.update({'font.size': 10})
 save = True
 
 # Data with updated category names and colors
@@ -13,11 +13,11 @@ bar_width = 0.8
 Dataset_Name = 'YAGO3-10 Airport-ConnectsTo'
 
 fig, axs = plt.subplots(1, 3, figsize=(6, 3.0))
-fig.suptitle(Dataset_Name, fontsize=14,y=0.9)
+fig.suptitle(Dataset_Name, fontsize=14,y=0.94)
 # Plot for Total TIME
 bars = axs[1].bar(categories, total_time, color=colors, width=bar_width)
-axs[1].set_title('B. Inference Time')
-axs[1].set_ylabel('Time (sec)')
+axs[1].set_title('B. Inference Time',fontsize=12)
+axs[1].set_ylabel('Time (sec)',fontsize=12)
 axs[1].margins(x=0.08)
 axs[1].set_ylim(0,250)
 axs[1].spines['top'].set_visible(False)
@@ -30,8 +30,8 @@ for bar in bars:
 # Plot for Hits@10
 bars = axs[0].bar(categories, hits_at_10, color=colors, width=bar_width)
 axs[0].set_ylim(0, 1)
-axs[0].set_title('A. Inference\nHits@10')
-axs[0].set_ylabel('Hits')
+axs[0].set_title('A. Inference Hits@10',fontsize=12)
+axs[0].set_ylabel('Hits @10' ,fontsize=12)
 axs[0].margins(x=0.08)
 axs[0].spines['top'].set_visible(False)
 axs[0].spines['right'].set_visible(False)
@@ -42,8 +42,8 @@ for bar in bars:
 
 # Plot for Max RAM Usage
 bars = axs[2].bar(categories, max_ram_usage, color=colors, width=bar_width)
-axs[2].set_title('C. Max Memory\nUsage')
-axs[2].set_ylabel('Memory (GBs)')
+axs[2].set_title('C. Inference Memory',fontsize=12)
+axs[2].set_ylabel('Memory (GB)',fontsize=12)
 axs[2].margins(x=0.08)
 axs[2].set_ylim(0,50)
 axs[2].spines['top'].set_visible(False)
@@ -57,9 +57,9 @@ for bar in bars:
 plt.tight_layout()
 # plt.show()
 if save:
-    plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-    # plt.savefig('LP_YAGO310_INF.pdf', dpi=1200,bbox_inches='tight', format='pdf')
-
+    # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+    plt.savefig('LP_YAGO310_INF.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+plt.show()
 """ FOR LINE GRAPH """
 
 if True:
@@ -82,8 +82,8 @@ if True:
     ax[0].plot(num_targets, kg_wise_time, marker='o', color=colors[2], label=categories[2])
     
     # Adding titles and labels
-    ax[0].set_xlabel('# Target Nodes Queried', fontsize=10)
-    ax[0].set_ylabel('Time (sec)', fontsize=10)
+    ax[0].set_xlabel('# Target Nodes Queried', fontsize=12)
+    ax[0].set_ylabel('Time (sec)', fontsize=12)
     ax[0].set_xticks(num_targets)
     ax[0].set_xticklabels(num_targets)
     ax[0].set_ylim((0,350))
@@ -113,8 +113,8 @@ if True:
     
     # Adding titles and labels
     # ax[1].set_title('RAM consumed by Each Method Against Number of Targets', fontsize=14)
-    ax[1].set_xlabel('# Target Nodes Queried', fontsize=10)
-    ax[1].set_ylabel('Memory (GBs)', fontsize=10)
+    ax[1].set_xlabel('# Target Nodes Queried', fontsize=12)
+    ax[1].set_ylabel('Memory (GB)', fontsize=12)
     ax[1].set_xticks(num_targets)
     ax[1].set_xticklabels(num_targets)
     ax[1].set_ylim((0,8))
@@ -127,7 +127,7 @@ if True:
     fig.suptitle('YAGO ConnectedTo', fontsize=14,y=0.9)
     if save:
         plt.tight_layout()
-        plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF_TARGETS.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-        # plt.savefig('LP_YAGO310_INF_TARGETS.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+        # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF_TARGETS.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+        plt.savefig('LP_YAGO310_INF_TARGETS.pdf', dpi=1200,bbox_inches='tight', format='pdf')
 plt.show()
     

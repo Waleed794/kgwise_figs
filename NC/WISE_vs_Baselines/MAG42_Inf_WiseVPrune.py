@@ -243,7 +243,7 @@ if True:
     # kg_tosa_RAM = [40.68 for _ in range(len(num_targets))]
     kg_wise_RAM = [30.54, 30.66, 30.67, 30.7, 30.8]
 
-    fig, axs = plt.subplots(1, 2, figsize=(7, 2.5))
+    fig, axs = plt.subplots(1, 2, figsize=(7, 2))
     fig.suptitle('MAG Paper-Venue', fontsize=16, y=0.92)  # y=1.04)
 
     colors = ['#4c8bf5', '#F1BB71', '#CBF7DD', '#1aa260', '#9f62f5']
@@ -258,11 +258,11 @@ if True:
 
     # Adding titles and labels
     # axs[0].set_title('Total Inference Time Against Query Size', fontsize=14)
-    axs[0].set_xlabel('# Target Nodes Queried', fontsize=10)
-    axs[0].set_ylabel('Time (sec)', fontsize=10)
+    axs[0].set_xlabel('# Target Nodes Queried', fontsize=12)
+    axs[0].set_ylabel('Time (sec)', fontsize=12)
     axs[0].set_xticks(num_targets)
-    axs[0].set_xticklabels(num_targets, fontsize=10)
-    axs[0].tick_params(axis='y', labelsize=10)
+    axs[0].set_xticklabels(num_targets, fontsize=12)
+    axs[0].tick_params(axis='y', labelsize=12)
     axs[0].set_ylim(0, max(default_time[0], DQ_time[0]) + 20)
     axs[0].spines['top'].set_visible(False)
     axs[0].spines['right'].set_visible(False)
@@ -275,10 +275,10 @@ if True:
     # for i, v in enumerate(kg_wise_time):
     #     ax.text(num_targets[i], v + 0.3, str(v), ha='center', va='bottom')
     for i, v in enumerate(kg_wise_RAM):
-        axs[1].text(num_targets[i], v - 0.8, str(v), ha='center', va='top',fontsize=8)
+        axs[1].text(num_targets[i], v - 0.8, str(v), ha='center', va='top',fontsize=10)
 
     for i, v in enumerate(default_RAM):
-        axs[1].text(num_targets[i], v - 4.2, str(v), ha='center', va='top', fontsize=8)
+        axs[1].text(num_targets[i], v - 4.2, str(v), ha='center', va='top', fontsize=10)
 
     axs[1].plot(num_targets, default_RAM, marker='o', color=colors[0], label=labels[0])
     axs[1].plot(num_targets, gcnp_RAM, marker='X', markerfacecolor=colors[1], linestyle='', markeredgecolor='black',
@@ -287,11 +287,11 @@ if True:
     axs[1].plot(num_targets, kg_wise_RAM, marker='o', color=colors[3], label=labels[3])
     axs[1].plot(num_targets, DQ_RAM, marker='o', color=colors[4], label=labels[2])
     # axs[1].set_title('Max RAM Usage Against Query Size', fontsize=14)
-    axs[1].set_xlabel('# Target Nodes Queried', fontsize=10)
-    axs[1].set_ylabel('Memory (GBs)', fontsize=10)
+    axs[1].set_xlabel('# Target Nodes Queried', fontsize=12)
+    axs[1].set_ylabel('Memory (GB)', fontsize=12)
     axs[1].set_xticks(num_targets)
-    axs[1].set_xticklabels(num_targets, fontsize=10)
-    axs[1].tick_params(axis='y', labelsize=10)
+    axs[1].set_xticklabels(num_targets, fontsize=12)
+    axs[1].tick_params(axis='y', labelsize=12)
     axs[1].set_ylim(0, max(default_RAM[0], DQ_RAM[0]) + 5)
     axs[1].spines['top'].set_visible(False)
     axs[1].spines['right'].set_visible(False)

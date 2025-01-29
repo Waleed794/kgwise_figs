@@ -18,8 +18,8 @@ fig.suptitle('DBLP Paper-Venue', fontsize=14,y =0.95)
 # fig.suptitle('KG-TOSA and KG-WISE Comparison ',y=1.05,fontsize=16)
 # Test Accuracy Plot
 bars = axs[0].bar(models, test_accuracy, width, color=['#4c8bf5', '#1aa260'])
-axs[0].set_ylabel('Accuracy in %', fontsize=10)
-axs[0].set_title('A. Inference Accuracy', fontsize=10)
+axs[0].set_ylabel('Accuracy (%)', fontsize=12)
+axs[0].set_title('A. Inference Accuracy', fontsize=12)
 axs[0].set_ylim(0, 1)
 axs[0].spines['top'].set_visible(False)
 axs[0].spines['right'].set_visible(False)
@@ -37,8 +37,8 @@ wise_total_time = np.sum(wise_pre_model_inf)
 # Training Time Plot (Single Bar)
 bars_train_time = axs[1].bar(models, [kg_tosa_total_time, wise_total_time], width, color=['#4c8bf5', '#1aa260'])
 
-axs[1].set_ylabel('Time (sec)', fontsize=10)
-axs[1].set_title('B. Total Inference Time', fontsize=10)
+axs[1].set_ylabel('Time (sec)', fontsize=12)
+axs[1].set_title('B.Inference Time', fontsize=12)
 axs[1].set_ylim((0, 60))
 axs[1].spines['top'].set_visible(False)
 axs[1].spines['right'].set_visible(False)
@@ -77,8 +77,8 @@ for bar in bars_train_time:
 bars_memory_gkd = axs[2].bar(models[0], train_memory_gkd[0], width, label='Train Memory', color='#4c8bf5')
 bars_memory_gcnp = axs[2].bar(models[1], train_memory_gcnp[0], width, label='Train Memory', color='#1aa260')
 
-axs[2].set_ylabel('Memory (GBs)', fontsize=10)
-axs[2].set_title('C. Max Memory Usage', fontsize=10)
+axs[2].set_ylabel('Memory (GB)', fontsize=12)
+axs[2].set_title('C. Inference Memory', fontsize=12)
 axs[2].set_ylim((0,20))
 axs[2].spines['top'].set_visible(False)
 axs[2].spines['right'].set_visible(False)
@@ -93,8 +93,8 @@ for b in [bars_memory_gkd, bars_memory_gcnp]:
 # Formatting
 for ax in axs:
     ax.set_xticks(models)
-    ax.set_xticklabels(models, fontsize=10)
-    ax.tick_params(axis='y', labelsize=10)
+    ax.set_xticklabels(models, fontsize=12)
+    ax.tick_params(axis='y', labelsize=12)
 
 # Layout adjustment
 plt.tight_layout()

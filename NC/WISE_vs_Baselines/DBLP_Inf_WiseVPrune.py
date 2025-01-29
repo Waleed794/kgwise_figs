@@ -288,7 +288,7 @@ if True:
     # kg_tosa_RAM = [17.72 for _ in range(len(num_targets))]
     kg_wise_RAM = [6.26, 6.31, 6.31, 6.34, 6.36]
     
-    fig, axs = plt.subplots(1, 2, figsize=(7, 2.5))
+    fig, axs = plt.subplots(1, 2, figsize=(7, 2))
 
     colors = ['#4c8bf5','#F1BB71','#CBF7DD','#1aa260','#9f62f5']
     
@@ -302,11 +302,11 @@ if True:
     axs[0].spines['right'].set_visible(False)
     # Adding titles and labels
     # axs[0].set_title('Total Inference Time Against Query Size', fontsize=14)
-    axs[0].set_xlabel('# Target Nodes Queried', fontsize=10)
-    axs[0].set_ylabel('Time (sec)', fontsize=10)
+    axs[0].set_xlabel('# Target Nodes Queried', fontsize=12)
+    axs[0].set_ylabel('Time (sec)', fontsize=12)
     axs[0].set_xticks(num_targets)
-    axs[0].set_xticklabels(num_targets,fontsize=10)
-    axs[0].tick_params(axis='y', labelsize=10)
+    axs[0].set_xticklabels(num_targets,fontsize=12)
+    axs[0].tick_params(axis='y', labelsize=12)
     axs[0].set_ylim(0,max(default_time[0],DQ_time[0])+10)
     # Adding legend
     #axs[0].legend(loc='upper left', bbox_to_anchor=(0.5, 1.3),ncols=4)
@@ -316,10 +316,10 @@ if True:
     # for i, v in enumerate(kg_tosa_time):
     #     ax.text(num_targets[i], v + 0.3, str(v), ha='center', va='bottom')
     for i, v in enumerate(kg_wise_RAM):
-        axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=8)
+        axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=10)
 
     for i, v in enumerate(gcnp_RAM):
-        axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=8)
+        axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=10)
 
     
     axs[1].plot(num_targets, default_RAM, marker='o', color=colors[0],label=labels[0])
@@ -329,11 +329,11 @@ if True:
     axs[1].plot(num_targets, DQ_RAM, marker='o', color=colors[4], label=labels[2])
 
     # axs[1].set_title('Max RAM Usage Against Query Size', fontsize=14)
-    axs[1].set_xlabel('# Target Nodes Queried', fontsize=10)
-    axs[1].set_ylabel('Memory (GBs)', fontsize=10)
+    axs[1].set_xlabel('# Target Nodes Queried', fontsize=12)
+    axs[1].set_ylabel('Memory (GB)', fontsize=12)
     axs[1].set_xticks(num_targets)
-    axs[1].set_xticklabels(num_targets,fontsize=10)
-    axs[1].tick_params(axis='y', labelsize=10)
+    axs[1].set_xticklabels(num_targets,fontsize=12)
+    axs[1].tick_params(axis='y', labelsize=12)
     # axs[1].set_yscale('log', base=2)
     axs[1].set_ylim(0,max(default_RAM[0],DQ_RAM[0])+2)
     axs[1].spines['top'].set_visible(False)
@@ -344,7 +344,7 @@ if True:
     handles.extend(h)
     labels.extend(l)    
 # Create a single legend outside the subplots
-    fig.legend(handles, labels, loc='upper center',ncols=5,bbox_to_anchor=(0.5, 1.05))
+    fig.legend(handles, labels, loc='upper center',ncols=5,bbox_to_anchor=(0.5, 1.15),fontsize=12)
     fig.suptitle('DBLP Paper-Venue', fontsize=14,y=0.9)
     plt.tight_layout()
     if save:

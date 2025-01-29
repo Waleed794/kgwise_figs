@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 10})
 data = {
     'nodetypes': ["Identifier","SameAs","Creator","Primary\nE-Edition","Title","Person","DOI"],#,"Volume"],#,"Pagination","Toc-Page"],
     'KG-TOSA':[18513,12780,9467,9312,9291,7962,5936],#,3094],#,1580,138],
@@ -22,7 +23,7 @@ r1 = np.arange(len(df['nodetypes']))  # The label locations
 r2 = [x + bar_width for x in r1]    # Position for second bar
 
 # Create the subplots, 1 row, 3 columns
-fig, ax1 = plt.subplots(1, 1, figsize=(7, 3))  # Adjusted figure size to fit 3 charts in a row
+fig, ax1 = plt.subplots(1, 1, figsize=(6, 3))  # Adjusted figure size to fit 3 charts in a row
 
 # Add the overall title for the dataset
 # fig.suptitle(Dataset_Name, fontsize=14, y=0.95)
@@ -33,7 +34,7 @@ bars2 = ax1.bar(r2, df['KG-WISE'], color=colors[1], width=bar_width, label='KG-W
 
 # Add labels and title for the time chart
 # ax1.set_xlabel('# Workers', fontsize=12)
-ax1.set_ylabel('Number of Chunks', fontsize=10)
+ax1.set_ylabel('Number of Chunks', fontsize=12)
 # ax1.set_title('Inference Time', fontsize=14, y=0.98)
 ax1.set_ylim(0, 20000)
 
