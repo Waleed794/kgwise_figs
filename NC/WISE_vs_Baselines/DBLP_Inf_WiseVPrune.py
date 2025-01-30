@@ -63,12 +63,12 @@ width = 0.65
 
 # Create a new figure
 if FIG_1:
-    fig = plt.figure(figsize=(14, 7))
+    fig = plt.figure(figsize=(14, 6))
 else:
-    fig = plt.figure(figsize=(11, 6))
+    fig = plt.figure(figsize=(14, 6))
 
 if not FIG_1:
-    fig.suptitle('DBLP Paper-Venue', fontsize=16,y=.96,)
+    fig.suptitle('DBLP Paper-Venue', fontsize=14,y=0.85,)
 
 # ACCURACY subplot
 if not FIG_1 or ACC:
@@ -80,11 +80,11 @@ if not FIG_1 or ACC:
     bars2_4 = ax2.bar(x[4], accuracy_KG_WISE, width, color='#1aa260', label='KG-WISE')
     
     
-    ax2.set_ylabel('Accuracy in %',fontsize=13)
+    ax2.set_ylabel('Accuracy(%)',fontsize=12)
     if not FIG_1:
         ax2.set_title('A. Inference Accuracy',fontsize=12)
     else:
-        ax2.set_title('C. Inference Accuracy',fontsize=13)
+        ax2.set_title('C. Inference Accuracy',fontsize=12)
     ax2.set_xticks(x)
     if not FIG_1:
         ax2.set_xticklabels(labels,fontsize=10)
@@ -138,7 +138,7 @@ if not FIG_1 or TIME:
     bars1_5c = ax1.bar(x[2], inference_time_Inf_DQ, width, bottom=np.add(inference_time_Load_DQ, inference_time_Model_DQ), color='#4c8bf5')
     
     
-    ax1.set_ylabel('Time (sec)',fontsize=13)
+    ax1.set_ylabel('Time (sec)',fontsize=12)
     if not FIG_1:
         ax1.set_title('B. Inference Time',fontsize=12)
         ax1.set_xticklabels(labels,fontsize=10)
@@ -148,12 +148,12 @@ if not FIG_1 or TIME:
     ax1.set_xticks(x)
     # ax1.set_xticklabels(labels,fontsize=12)
     if FIG_1:
-        ax1.tick_params(axis='y', labelsize=13)
+        ax1.tick_params(axis='y', labelsize=12)
     ax1.margins(x=0.08)
     if not FIG_1:
-        ax1.legend([bars1_1a, bars1_1b,bars1_1c], ['Pre-Process', 'Model-Load','Forward-Pass'], loc='lower left', bbox_to_anchor=(-0.35, 1.25), ncol=3) # (-0.2, 1.1) For individual
+        ax1.legend([bars1_1a, bars1_1b,bars1_1c], ['Pre-Process', 'Model-Load','Forward-Pass'], loc='lower left', bbox_to_anchor=(-0.1, 1.4), ncol=3) # (-0.2, 1.1) For individual
     else:
-        ax1.legend([bars1_1a, bars1_1b,bars1_1c], ['Pre-Process', 'Model-Load','Forward-Pass'], loc='lower left', bbox_to_anchor=(-0.15, 1.17), ncol=2,fontsize=12) # (-0.2, 1.1) For individual
+        ax1.legend([bars1_1a, bars1_1b,bars1_1c], ['Pre-Process', 'Model-Load','Forward-Pass'], loc='lower left', bbox_to_anchor=(-0.1, 1.4), ncol=2,fontsize=12) # (-0.2, 1.1) For individual
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
     """ Graph_SAINT bars """
@@ -213,10 +213,10 @@ if not FIG_1 or TIME:
     ax1.set_ylim(0, max_ylim)
     print(f'MAX Y_LIM is {max_ylim}')
     plt.tight_layout()
-    if save:
+    # if save:
         # fig.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/DBLP_INF-TIME.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-        fig.savefig('DBLP_INF-TIME.pdf', dpi=1200,bbox_inches='tight', format='pdf')
-        plt.show()
+        # fig.savefig('DBLP_INF-TIME.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+        # plt.show()
 
 
 
@@ -230,12 +230,12 @@ if not FIG_1 or MEM:
     bars3_5 = ax3.bar(x[2], ram_DQ, width, color='#1aa260', label='DQ')
     
     
-    ax3.set_ylabel('Memory (GBs)',fontsize=13)
+    ax3.set_ylabel('Memory (GB)',fontsize=12)
     if not FIG_1:
-        ax3.set_title('C. Max Memory Usage',fontsize=12)
-        ax3.set_xticklabels(labels,fontsize=10)
+        ax3.set_title('C. Inference Memory',fontsize=12)
+        ax3.set_xticklabels(labels,fontsize=12)
     else:
-        ax3.set_title('D. Max Memory Usage',fontsize=13)
+        ax3.set_title('D. Inference Memory',fontsize=12)
         ax3.set_xticklabels(labels,fontsize=12)
     ax3.set_xticks(x)
     # ax3.set_xticklabels(labels,fontsize=12)
@@ -256,20 +256,21 @@ if not FIG_1 or MEM:
             ax3.text(bar.get_x() + bar.get_width() / 2.0, bar.get_height() + 0.2, 'T-OOM', ha='center', va='bottom', color='red', fontsize=12, fontweight='bold',rotation=90)
             
     # fig.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/DBLP_INF-MEM.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-    fig.savefig('DBLP_INF-MEM.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+    # fig.savefig('DBLP_INF-MEM.pdf', dpi=1200,bbox_inches='tight', format='pdf')
     # Adjust layout
     # plt.subplots_adjust(wspace=0.3, hspace=0.6)
-    fig.subplots_adjust(wspace=0.25,hspace=0.6)  # Adjust horizontal spacing between subplots.
-    plt.tight_layout()
+    # fig.subplots_adjust(wspace=0.25,hspace=0.6)  # Adjust horizontal spacing between subplots.
+    # plt.tight_layout()
     if save:
         # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/DBLP_INF_combined_plots.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+        plt.tight_layout()
         plt.savefig('DBLP_INF_combined_plots.pdf', dpi=1200,bbox_inches='tight', format='pdf')
         plt.show()
 
 
 
 
-if True:
+if False:
     labels = ['Graph-SAINT', 'GCNP','DQ','KG-WISE'] #'Default\nTOSA' [3]
     num_targets = ['100', '200','400','800','1600']  
 

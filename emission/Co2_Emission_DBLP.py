@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 # Data
 models = ['Graph-SAINT', 'KG-WISE']
 plt.rcParams.update({'font.size': 10})
+c=1
 DBLP_Emission = [0.0003936666667, 0.0001613333333]  # Raw emission values
 
 # Normalize emissions

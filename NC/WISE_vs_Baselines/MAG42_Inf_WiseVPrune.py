@@ -50,10 +50,9 @@ x = np.arange(len(labels))
 width = 0.65
 
 # Create a new figure
-# fig = plt.figure(figsize=(14, 7))
-fig = plt.figure(figsize=(11, 6))
-fig.suptitle('MAG Paper-Venue', fontsize=16, y=0.96)
-
+fig = plt.figure(figsize=(14, 5))
+# fig = plt.figure(figsize=(11, 6))
+fig.suptitle('MAG Paper-Venue', fontsize=14, y=0.97)
 # ACCURACY subplot
 ax2 = fig.add_subplot(231)
 bars2_1 = ax2.bar(x[0], accuracy_Default, width, color='#1aa260', label='Default')  # 4c8bf5
@@ -62,7 +61,7 @@ bars2_5 = ax2.bar(x[2], accuracy_DQ, width, color='#1aa260', label='DQ')
 bars2_3 = ax2.bar(x[3], accuracy_GKD, width, color='#1aa260', label='GKD')  # CBF7DD
 bars2_4 = ax2.bar(x[4], accuracy_KG_WISE, width, color='#1aa260', label='KG-WISE')
 
-ax2.set_ylabel('Accuracy in %', fontsize=13)
+ax2.set_ylabel('Accuracy(%)', fontsize=12)
 ax2.set_title('A. Inference Accuracy', fontsize=12)
 ax2.set_xticks(x)
 ax2.set_xticklabels(labels, fontsize=10)
@@ -112,7 +111,7 @@ bars1_5b = ax1.bar(x[2], inference_time_Model_DQ, width, bottom=inference_time_L
 bars1_5c = ax1.bar(x[2], inference_time_Inf_DQ, width, bottom=np.add(inference_time_Load_DQ, inference_time_Model_DQ),
                    color='#4c8bf5')
 
-ax1.set_ylabel('Time (sec)', fontsize=13)
+ax1.set_ylabel('Time (sec)', fontsize=12)
 ax1.set_title('B. Inference Time', fontsize=12)
 ax1.set_xticks(x)
 ax1.set_xticklabels(labels, fontsize=10)
@@ -196,8 +195,8 @@ bars3_3 = ax3.bar(x[3], ram_GKD, width, color='#1aa260', label='GKD')
 bars3_4 = ax3.bar(x[4], ram_KG_WISE, width, color='#1aa260', label='KG-WISE')
 bars3_5 = ax3.bar(x[2], ram_DQ, width, color='#1aa260', label='DQ')
 
-ax3.set_ylabel('Memory (GBs)', fontsize=13)
-ax3.set_title('C. Max Memory Usage', fontsize=12)
+ax3.set_ylabel('Memory (GB)', fontsize=12)
+ax3.set_title('C. Inference Memory', fontsize=12)
 ax3.set_xticks(x)
 ax3.set_xticklabels(labels, fontsize=10)
 # ax3.tick_params(axis='y', labelsize=13)
@@ -220,10 +219,11 @@ for bars in [bars3_2, bars3_3]:
 # fig.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/DBLP_INF-MEM.pdf', dpi=1200, bbox_inches='tight',format='pdf')
 # Adjust layout
 # plt.subplots_adjust(wspace=0.4, hspace=0.6)
-fig.subplots_adjust(wspace=0.25, hspace=0.6)  # Adjust horizontal spacing between subplots.
+# fig.subplots_adjust(wspace=0.25, hspace=0.6)  # Adjust horizontal spacing between subplots.
 if save:
-    plt.savefig('MAG_INF_combined_plots.pdf', dpi=1200,
-                bbox_inches='tight', format='pdf')
+    plt.tight_layout()
+    plt.savefig('MAG_INF_combined_plots.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+    plt.show()
 
 if True:
     num_targets = ['100', '200', '400', '800', '1600']  # Example target counts, replace with actual values if needed
@@ -304,7 +304,7 @@ if True:
     # fig.legend(handles, labels, loc='upper center',ncols=4,bbox_to_anchor=(0.5, 1.25))
     plt.tight_layout()
 
-    if save:
+    # if save:
         # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
-        plt.savefig('MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
-plt.show()
+        # plt.savefig('MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+        # plt.show()
