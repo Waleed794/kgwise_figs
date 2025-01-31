@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 models = ['Graph-SAINT', 'KG-WISE']
 plt.rcParams.update({'font.size': 10})
 c=1
-DBLP_Emission = [0.0003936666667, 0.0001613333333]  # Raw emission values
+DBLP_Emission = [0.1509241955, 0.05333952973]  # Raw emission values
 
 # Normalize emissions
 normalized_emission = [1, DBLP_Emission[0] / DBLP_Emission[1]]  # Graph-SAINT = 1, KG-WISE = ratio
 
 # Scale the raw values (e.g., by 10^6 to make them larger)
-scale_factor = 10**4  # Adjust this factor as needed
+scale_factor = 10**1  # Adjust this factor as needed
 scaled_emission = [val * scale_factor for val in DBLP_Emission]
 
 # Create figure with two side-by-side plots
@@ -18,9 +18,9 @@ fig, axes = plt.subplots(1, 2, figsize=(5, 2.2))  # Two plots side by side
 
 # First plot: Scaled raw emissions
 axes[0].bar(models, scaled_emission, color=['#4c8bf5', '#1aa260'], width=0.6)
-# axes[0].set_title('Carbon Emissions', fontsize=12)
-axes[0].set_ylabel('Emissions(Kg CO$_2$ × $10^4$)', fontsize=10)  # Use scientific notation in the label
-axes[0].set_ylim((0,5))
+axes[0].set_title('Carbon Emissions', fontsize=12)
+axes[0].set_ylabel('Emissions(gCO$_2$ ×$10^{-1}$)', fontsize=10)  # Use scientific notation in the label
+axes[0].set_ylim((0,3))
 axes[0].spines['top'].set_visible(False)
 axes[0].spines['right'].set_visible(False)
 # Add text values on top of bars (scaled)
@@ -30,9 +30,9 @@ for bar, raw_val in zip(axes[0].patches, scaled_emission):
 
 # Second plot: Normalized emissions
 axes[1].bar(models, normalized_emission, color=['#4c8bf5', '#1aa260'], width=0.6)
-# axes[1].set_title('Emission Savings', fontsize=12)
+axes[1].set_title('Emission Savings', fontsize=12)
 axes[1].set_ylabel('Relative Saving Times', fontsize=10)
-axes[1].set_ylim((0,5))
+axes[1].set_ylim((0,4))
 axes[1].spines['top'].set_visible(False)
 axes[1].spines['right'].set_visible(False)
 # Add text values on top of bars (normalized)
@@ -46,4 +46,5 @@ plt.tight_layout()
 
 # Save the plot
 plt.savefig('CarbonEmission_combined.pdf', dpi=1200, bbox_inches='tight', format='pdf')
+# plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/CarbonEmission_combined.pdf', dpi=1200, bbox_inches='tight', format='pdf')
 plt.show()

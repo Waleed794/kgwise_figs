@@ -3,7 +3,7 @@ import numpy as np
 
 plt.rcParams.update({'font.size': 10})
 # Data
-models = [r'$M$', r'$\widetilde{\mathbb{M}}$']#['KG-TOSA', 'KG-WISE']
+models = [r'$\widetilde{M}$', r'$\widetilde{\mathbb{M}}$']#['KG-TOSA', 'KG-WISE']
 test_accuracy = [0.79, 0.72]  # Dummy values for Test Accuracy
 kg_tosa_pre_model_inf = [25.91,	19.02,	37.42]  # Teacher, Student
 wise_pre_model_inf = [13.35,	4.18,	47.4]# Train, Prune, Re-train
