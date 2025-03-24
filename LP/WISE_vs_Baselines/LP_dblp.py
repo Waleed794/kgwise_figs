@@ -13,7 +13,7 @@ max_ram_usage = [0,33.35,1.73]
 
 colors = ['#9c8bff','#4c8bf4', '#1aa260']
 bar_width = 0.8
-Dataset_Name = 'DBLP Author-AffiliatedWith'
+Dataset_Name = 'DBLP Author-AffiliatedWith (AA)'
 
 
 
@@ -105,11 +105,11 @@ if True:
     ax[0].set_ylim((0.5,500))
     ax[0].spines['top'].set_visible(False)
     ax[0].spines['right'].set_visible(False)
-    for i, v in enumerate(kg_wise_time):
-        ax[0].text(num_targets[i], v + 0.3, str(round(v,1)), ha='center', va='bottom')
+    # for i, v in enumerate(kg_wise_time):
+    #     ax[0].text(num_targets[i], v + 0.3, str(round(v,1)), ha='center', va='bottom')
     
-    for i, v in enumerate(morse_time):
-        ax[0].text(num_targets[i], v + 0.3, str(round(v,1)), ha='center', va='bottom')
+    # for i, v in enumerate(morse_time):
+    #     ax[0].text(num_targets[i], v + 0.3, str(round(v,1)), ha='center', va='bottom')
     
     # Plot lines for each category
     ax[1].plot(num_targets, morse_RAM, marker='o', color=colors[1], label=categories[1])
@@ -124,11 +124,11 @@ if True:
     ax[1].set_ylim((0,40))
     ax[1].spines['top'].set_visible(False)
     ax[1].spines['right'].set_visible(False)
-    for i, v in enumerate(kg_wise_RAM):
-        ax[1].text(num_targets[i], v + 0., str(v), ha='center', va='bottom')
+    # for i, v in enumerate(kg_wise_RAM):
+    #     ax[1].text(num_targets[i], v + 0., str(v), ha='center', va='bottom')
  
-    for i, v in enumerate(morse_RAM):
-        ax[1].text(num_targets[i], v + 0., str(v), ha='center', va='bottom')
+    # for i, v in enumerate(morse_RAM):
+    #     ax[1].text(num_targets[i], v + 0., str(v), ha='center', va='bottom')
     handles, labels = [], []
 
     h, l = ax[0].get_legend_handles_labels()
@@ -137,7 +137,7 @@ if True:
 # Create a single legend outside the subplots
     # fig.legend(handles, labels, loc='upper center',ncols=1,bbox_to_anchor=(0.5, 1.11))
     plt.tight_layout()
-    fig.suptitle('DBLP Paper-Venue', fontsize=14,y=0.9)
+    fig.suptitle('DBLP (AA)', fontsize=14,y=0.9)
     
     if save:
         plt.tight_layout()

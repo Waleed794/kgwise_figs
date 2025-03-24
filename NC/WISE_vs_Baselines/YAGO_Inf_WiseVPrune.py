@@ -57,7 +57,7 @@ width = 0.65
 # Create a new figure
 fig = plt.figure(figsize=(14, 5))
 # fig = plt.figure(figsize=(11, 6))
-fig.suptitle('YAGO Place-Country', fontsize=14,y =0.97)
+fig.suptitle('YAGO4 Place-Country (PC)', fontsize=14,y =0.97)
 # ACCURACY subplot
 ax2 = fig.add_subplot(231)
 bars2_1 = ax2.bar(x[0], accuracy_Default, width, color='#1aa260', label='Default')
@@ -269,11 +269,11 @@ if True:
     # for i, v in enumerate(kg_wise_time):
     #     ax.text(num_targets[i], v + 0.3, str(v), ha='center', va='bottom')
     
-    for i, v in enumerate(kg_wise_RAM):
-        axs[1].text(num_targets[i], v - 0.8, str(v), ha='center', va='top',fontsize=10)
+    # for i, v in enumerate(kg_wise_RAM):
+    #     axs[1].text(num_targets[i], v - 0.8, str(v), ha='center', va='top',fontsize=10)
     
-    for i, v in enumerate(gcnp_RAM):
-        axs[1].text(num_targets[i], v - 1, str(v), ha='center', va='top',fontsize=10)
+    # for i, v in enumerate(gcnp_RAM):
+    #     axs[1].text(num_targets[i], v - 1, str(v), ha='center', va='top',fontsize=10)
         
     axs[1].plot(num_targets, default_RAM, marker='o', color=colors[0],label=labels[0])
     axs[1].plot(num_targets, gcnp_RAM, marker='o', color=colors[1],label=labels[1])
@@ -297,10 +297,10 @@ if True:
 # Create a single legend outside the subplots
     # fig.legend(handles, labels, loc='upper center',ncols=4,bbox_to_anchor=(0.5, 1.25))
     plt.tight_layout()
-    fig.suptitle('YAGO Place-Country', fontsize=14,y=1.05)
+    fig.suptitle('YAGO4 (PC)', fontsize=14,y=1.05)
     
-    # if save:
-    #     # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/YAGO_INF_vTargets.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-    #     plt.savefig('YAGO_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
-    #     plt.show()
+    if save:
+        # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/YAGO_INF_vTargets.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+        plt.savefig('YAGO_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+        plt.show()
 

@@ -13,7 +13,7 @@ train_memory_gcnp = [13.38]  # Dummy values for Train Memory (Non-stacked)
 # Create figure and subplots
 fig, axs = plt.subplots(1, 3, figsize=(6, 3))
 width = 0.6
-fig.suptitle('MAG Paper-Venue', fontsize=14,y =0.92)
+fig.suptitle('MAG Paper-Venue (PV)', fontsize=14,y =0.92)
 
 # fig.suptitle('KG-TOSA and KG-WISE Comparison ',y=1.05,fontsize=16)
 # Test Accuracy Plot

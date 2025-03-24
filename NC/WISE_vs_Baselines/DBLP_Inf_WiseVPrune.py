@@ -8,7 +8,7 @@ ACC = False
 MEM = False
 TIME = False
 # Data for the bars
-labels = ['Graph\nSAINT', 'GCNP','DQ','GKD', 'KG\nWISE'] #'Default\nTOSA' [3]
+labels = ['Graph\nSAINT', 'GCNP','DQ','GKD','IBMB', 'KG\nWISE'] #'Default\nTOSA' [3]
 
 
 #if False:
@@ -33,6 +33,10 @@ inference_time_Load_DQ = [17.95]
 inference_time_Model_DQ = [25.16] 
 inference_time_Inf_DQ = [409.18]
 
+inference_time_Load_IBMB = [206.24]
+inference_time_Model_IBMB = [39.98] 
+inference_time_Inf_IBMB = [5]
+
 inference_time_Load_GKD = [0]
 inference_time_Model_GKD = [0] 
 inference_time_Inf_GKD = [0]
@@ -43,6 +47,7 @@ accuracy_KG_WISE = [0.92]
 accuracy_Prune_train = [0.84]
 # accuracy_Default_TOSA = [0.92]
 accuracy_DQ = [0.77]
+accuracy_IBMB = [0.5]
 accuracy_GKD = [0]
 
 
@@ -52,6 +57,7 @@ ram_KG_WISE = [4.74]
 ram_Prune_train = [20.9]
 # ram_Default_TOSA = [16.59]
 ram_DQ = [69.3]
+ram_IBMB = [28.56]
 ram_GKD = [0]
 
 
@@ -68,7 +74,7 @@ else:
     fig = plt.figure(figsize=(14, 6))
 
 if not FIG_1:
-    fig.suptitle('DBLP Paper-Venue', fontsize=14,y=0.85,)
+    fig.suptitle('DBLP Paper-Venue (PV)', fontsize=14,y=0.85,)
 
 # ACCURACY subplot
 if not FIG_1 or ACC:
@@ -77,7 +83,8 @@ if not FIG_1 or ACC:
     bars2_2 = ax2.bar(x[1], accuracy_Prune_train, width, color='#1aa260', label='GCNP')#F1BB71
     bars2_5 = ax2.bar(x[2], accuracy_DQ, width, color='#1aa260', label='DQ')
     bars2_3 = ax2.bar(x[3], accuracy_GKD, width, color='#1aa260', label='GKD') ##CBF7DD
-    bars2_4 = ax2.bar(x[4], accuracy_KG_WISE, width, color='#1aa260', label='KG-WISE')
+    bars2_4 = ax2.bar(x[4], accuracy_IBMB, width, color='#1aa260', label='IBMB')
+    bars2_6 = ax2.bar(x[5], accuracy_KG_WISE, width, color='#1aa260', label='KG-WISE')
     
     
     ax2.set_ylabel('Accuracy(%)',fontsize=12)
@@ -92,14 +99,14 @@ if not FIG_1 or ACC:
         ax2.set_xticklabels(labels,fontsize=12)
     if FIG_1:
         ax2.tick_params(axis='y', labelsize=12)
-    ax2.set_ylim(0.5, 1)
+    ax2.set_ylim(0.2, 1)
     ax2.margins(x=0.08)
     ax2.spines['top'].set_visible(False)
     ax2.spines['right'].set_visible(False)
     
     # ax2.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=3)
     
-    for bars in [bars2_1, bars2_2,bars2_5, bars2_4]: #bars2_3,
+    for bars in [bars2_1, bars2_2,bars2_5, bars2_4,bars2_6]: #bars2_3,
         for bar in bars:
             yval = bar.get_height()
             ax2.text(bar.get_x() + bar.get_width()/2.0, yval + 0.01, round(yval, 3), ha='center', va='bottom')
@@ -107,10 +114,10 @@ if not FIG_1 or ACC:
     # T-OOM Bar for GKD
     for bars in [bars2_3,]:
         for bar in bars:
-            ax2.text(bar.get_x() + bar.get_width() / 2.0, bar.get_height() +0.5, 'T-OOM', ha='center', va='bottom', color='red', fontsize=12, fontweight='bold',rotation=90)
+            ax2.text(bar.get_x() + bar.get_width() / 2.0, bar.get_height() +0.2, 'T-OOM', ha='center', va='bottom', color='red', fontsize=12, fontweight='bold',rotation=90)
     
     # fig.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/DBLP_INF-ACC.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-    fig.savefig('DBLP_INF-ACC.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+    # fig.savefig('DBLP_INF-ACC.pdf', dpi=1200,bbox_inches='tight', format='pdf')
 
 
 # inference_time subplot
@@ -129,13 +136,17 @@ if not FIG_1 or TIME:
     # bars1_3b = ax1.bar(x[4], inference_time_Model_Default_TOSA, width, bottom=inference_time_Load_Default_TOSA, color='#ede658')
     # bars1_3c = ax1.bar(x[4], inference_time_Inf_Default_TOSA, width, bottom=np.add(inference_time_Load_Default_TOSA, inference_time_Model_Default_TOSA), color='#4c8bf5')
     
-    bars1_4a = ax1.bar(x[4], inference_time_Load_KG_WISE, width, color='#F1BB71', edgecolor='black')
-    bars1_4b = ax1.bar(x[4], inference_time_Model_KG_WISE, width, bottom=inference_time_Load_KG_WISE, color='#ede658')
-    bars1_4c = ax1.bar(x[4], inference_time_Inf_KG_WISE, width, bottom=np.add(inference_time_Load_KG_WISE, inference_time_Model_KG_WISE), color='#4c8bf5')
+    bars1_4a = ax1.bar(x[5], inference_time_Load_KG_WISE, width, color='#F1BB71', edgecolor='black')
+    bars1_4b = ax1.bar(x[5], inference_time_Model_KG_WISE, width, bottom=inference_time_Load_KG_WISE, color='#ede658')
+    bars1_4c = ax1.bar(x[5], inference_time_Inf_KG_WISE, width, bottom=np.add(inference_time_Load_KG_WISE, inference_time_Model_KG_WISE), color='#4c8bf5')
     
     bars1_5a = ax1.bar(x[2], inference_time_Load_DQ, width, color='#F1BB71', edgecolor='black')
     bars1_5b = ax1.bar(x[2], inference_time_Model_DQ, width, bottom=inference_time_Load_DQ, color='#ede658')
     bars1_5c = ax1.bar(x[2], inference_time_Inf_DQ, width, bottom=np.add(inference_time_Load_DQ, inference_time_Model_DQ), color='#4c8bf5')
+    
+    bars1_6a = ax1.bar(x[4], inference_time_Load_IBMB, width, color='#F1BB71', edgecolor='black')
+    bars1_6b = ax1.bar(x[4], inference_time_Model_IBMB, width, bottom=inference_time_Load_IBMB, color='#ede658')
+    bars1_6c = ax1.bar(x[4], inference_time_Inf_IBMB, width, bottom=np.add(inference_time_Load_IBMB, inference_time_Model_IBMB), color='#4c8bf5')
     
     
     ax1.set_ylabel('Time (sec)',fontsize=12)
@@ -199,6 +210,16 @@ if not FIG_1 or TIME:
     for bars in [bars1_3a]:
         for bar in bars:
             ax1.text(bar.get_x() + bar.get_width() / 2.0, bar.get_height() + 0.52, 'T-OOM', ha='center', va='bottom', color='red', fontsize=12, fontweight='bold',rotation=90)
+            
+    """ IBMB Bars """
+    IBMB_bars = [bars1_6a,bars1_6b,bars1_6c]
+    max_val = -4.8  # To Reduce the inflated actual value
+    for bars in IBMB_bars:
+        max_val += bars[0].get_height()
+        if bars is IBMB_bars[-1]:
+            for bar in bars:
+                yval = bar.get_height() + bar.get_y()
+                ax1.text(bar.get_x() + bar.get_width()/2.0, yval + 1, int(max_val), ha='center', va='bottom')
     
     # for bars in [bars1_1a,bars1_1b,bars1_1c,bars1_2a,bars1_2b,bars1_2c,bars1_5a,bars1_5b,bars1_5c , bars1_4a,bars1_4b,bars1_4c ]: # bars1_3a,bars1_3b,bars1_3c, 
     #     for bar in bars:
@@ -226,9 +247,9 @@ if not FIG_1 or MEM:
     bars3_1 = ax3.bar(x[0], ram_Default, width, color='#1aa260', label='Default')
     bars3_2 = ax3.bar(x[1], ram_Prune_train, width, color='#1aa260', label='GCNP')
     bars3_3 = ax3.bar(x[3], ram_GKD, width, color='#1aa260', label='Default\nTOSA')
-    bars3_4 = ax3.bar(x[4], ram_KG_WISE, width, color='#1aa260', label='KG-WISE')
+    bars3_4 = ax3.bar(x[5], ram_KG_WISE, width, color='#1aa260', label='KG-WISE')
     bars3_5 = ax3.bar(x[2], ram_DQ, width, color='#1aa260', label='DQ')
-    
+    bars3_6 = ax3.bar(x[4], ram_IBMB, width, color='#1aa260', label='IBMB')
     
     ax3.set_ylabel('Memory (GB)',fontsize=12)
     if not FIG_1:
@@ -245,7 +266,7 @@ if not FIG_1 or MEM:
     ax3.set_ylim(0, max(ram_Default + ram_Prune_train + ram_KG_WISE+ram_DQ) * 1.1)
     ax3.spines['top'].set_visible(False)
     ax3.spines['right'].set_visible(False)
-    for bars in [bars3_1, bars3_2,bars3_5, bars3_4]: # bars3_3
+    for bars in [bars3_1, bars3_2,bars3_5, bars3_4,bars3_6]: # bars3_3
         for bar in bars:
             yval = bar.get_height()
             ax3.text(bar.get_x() + bar.get_width()/2.0, yval + 0.5, round(yval, 2), ha='center', va='bottom')
@@ -270,7 +291,7 @@ if not FIG_1 or MEM:
 
 
 
-if False:
+if True:
     labels = ['Graph-SAINT', 'GCNP','DQ','KG-WISE'] #'Default\nTOSA' [3]
     num_targets = ['100', '200','400','800','1600']  
 
@@ -316,11 +337,11 @@ if False:
     # Adding value labels on the points
     # for i, v in enumerate(kg_tosa_time):
     #     ax.text(num_targets[i], v + 0.3, str(v), ha='center', va='bottom')
-    for i, v in enumerate(kg_wise_RAM):
-        axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=10)
+    # for i, v in enumerate(kg_wise_RAM):
+    #     axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=10)
 
-    for i, v in enumerate(gcnp_RAM):
-        axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=10)
+    # for i, v in enumerate(gcnp_RAM):
+    #     axs[1].text(num_targets[i], v -0.6, str(v), ha='center', va='top',fontsize=10)
 
     
     axs[1].plot(num_targets, default_RAM, marker='o', color=colors[0],label=labels[0])
@@ -346,7 +367,7 @@ if False:
     labels.extend(l)    
 # Create a single legend outside the subplots
     fig.legend(handles, labels, loc='upper center',ncols=5,bbox_to_anchor=(0.5, 1.15),fontsize=12)
-    fig.suptitle('DBLP Paper-Venue', fontsize=14,y=0.9)
+    fig.suptitle('DBLP (PV)', fontsize=14,y=0.9)
     plt.tight_layout()
     if save:
         # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/DBLP_INF_vTargets.pdf', dpi=1200, bbox_inches='tight',format='pdf')

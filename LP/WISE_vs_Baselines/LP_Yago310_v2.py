@@ -13,7 +13,7 @@ max_ram_usage = [7.27,0.59,0.53 ]
 colors = ['#4c8bf4','#4c8bf4', '#1aa260']  
 colors_line = ['#9c8bff','#4c8bf4', '#1aa260']  
 bar_width = 0.8
-Dataset_Name = 'YAGO3-10 Airport-ConnectsTo'
+Dataset_Name = 'YAGO3-10 ConnectedTo-Airport (CA)'
 
 fig, axs = plt.subplots(1, 3, figsize=(6, 3.0))
 fig.suptitle(Dataset_Name, fontsize=14,y=0.94)
@@ -60,8 +60,8 @@ for bar in bars:
 plt.tight_layout()
 # plt.show()
 if save:
-    plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF.pdf', dpi=1200, bbox_inches='tight',format='pdf')
-    # plt.savefig('LP_YAGO310_INF.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+    # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF.pdf', dpi=1200, bbox_inches='tight',format='pdf')
+    plt.savefig('LP_YAGO310_INF.pdf', dpi=1200,bbox_inches='tight', format='pdf')
 plt.show()
 """ FOR LINE GRAPH """
 
@@ -134,7 +134,7 @@ if True:
     labels.extend(l)    
     # Create a single legend outside the subplots
     fig.legend(handles, labels, loc='upper center',ncols=3,bbox_to_anchor=(0.5, 1.11))
-    fig.suptitle('YAGO ConnectedTo', fontsize=14,y=0.9)
+    fig.suptitle('YAGO3-10 (CA)', fontsize=14,y=0.9)
     if save:
         plt.tight_layout()
         # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_YAGO310_INF_TARGETS.pdf', dpi=1200, bbox_inches='tight',format='pdf')

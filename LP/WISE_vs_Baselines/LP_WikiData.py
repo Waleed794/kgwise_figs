@@ -8,7 +8,7 @@ hits_at_10 = [0,0.56, 0.5]
 max_ram_usage = [0,3.5, 0.51]
 colors = ['#4c8bf5','#4c8bf4', '#1aa260'] 
 bar_width = 0.8
-Dataset_Name = 'WikiKG Person-Occupation'
+Dataset_Name = 'WikiKG Person-Occupation (PO)'
 
 # fig, axs = plt.subplots(1, 3, figsize=(18, 5))
 fig, axs = plt.subplots(1, 3, figsize=(6, 3))
@@ -92,11 +92,11 @@ if True:
     ax[0].set_ylim((0,600))
     ax[0].spines['top'].set_visible(False)
     ax[0].spines['right'].set_visible(False)
-    for i, v in enumerate(kg_wise_time):
-        ax[0].text(num_targets[i], v + 0.0, str(round(v,1)), ha='center', va='bottom') # 0.3
+    # for i, v in enumerate(kg_wise_time):
+    #     ax[0].text(num_targets[i], v + 0.0, str(round(v,1)), ha='center', va='bottom') # 0.3
 
-    for i, v in enumerate(morse_time):
-        ax[0].text(num_targets[i], v + 0.0, str(round(v,1)), ha='center', va='bottom') # 0.3    
+    # for i, v in enumerate(morse_time):
+    #     ax[0].text(num_targets[i], v + 0.0, str(round(v,1)), ha='center', va='bottom') # 0.3    
 
     # Plot lines for each category
     ax[1].plot(num_targets, morse_RAM, marker='o', color=colors[0], label=categories[0])
@@ -111,13 +111,13 @@ if True:
     ax[1].set_ylim((0,6))
     ax[1].spines['top'].set_visible(False)
     ax[1].spines['right'].set_visible(False)
-    for i, v in enumerate(kg_wise_RAM):
-        ax[1].text(num_targets[i], v + 0.00, str(v), ha='center', va='bottom')
+    # for i, v in enumerate(kg_wise_RAM):
+    #     ax[1].text(num_targets[i], v + 0.00, str(v), ha='center', va='bottom')
 
-    for i, v in enumerate(morse_RAM):
-        ax[1].text(num_targets[i], v + 0.00, str(v), ha='center', va='bottom')
+    # for i, v in enumerate(morse_RAM):
+    #     ax[1].text(num_targets[i], v + 0.00, str(v), ha='center', va='bottom')
         
-    fig.suptitle('WikiKG2 Occupation', fontsize=14,y=0.9)
+    fig.suptitle('WikiKG2 (PO)', fontsize=14,y=0.9)
     plt.tight_layout()
     if save:
         # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/LP_WikiKG_INF_TARGETS.pdf', dpi=1200, bbox_inches='tight',format='pdf')

@@ -52,7 +52,7 @@ width = 0.65
 # Create a new figure
 fig = plt.figure(figsize=(14, 5))
 # fig = plt.figure(figsize=(11, 6))
-fig.suptitle('MAG Paper-Venue', fontsize=14, y=0.97)
+fig.suptitle('MAG Paper-Venue (PV)', fontsize=14, y=0.97)
 # ACCURACY subplot
 ax2 = fig.add_subplot(231)
 bars2_1 = ax2.bar(x[0], accuracy_Default, width, color='#1aa260', label='Default')  # 4c8bf5
@@ -244,7 +244,7 @@ if True:
     kg_wise_RAM = [30.54, 30.66, 30.67, 30.7, 30.8]
 
     fig, axs = plt.subplots(1, 2, figsize=(7, 2))
-    fig.suptitle('MAG Paper-Venue', fontsize=16, y=0.92)  # y=1.04)
+    fig.suptitle('MAG (PV)', fontsize=16, y=0.92)  # y=1.04)
 
     colors = ['#4c8bf5', '#F1BB71', '#CBF7DD', '#1aa260', '#9f62f5']
 
@@ -274,11 +274,11 @@ if True:
     #     ax.text(num_targets[i], v + 0.3, str(v), ha='center', va='bottom')
     # for i, v in enumerate(kg_wise_time):
     #     ax.text(num_targets[i], v + 0.3, str(v), ha='center', va='bottom')
-    for i, v in enumerate(kg_wise_RAM):
-        axs[1].text(num_targets[i], v - 0.8, str(v), ha='center', va='top',fontsize=10)
+    # for i, v in enumerate(kg_wise_RAM):
+    #     axs[1].text(num_targets[i], v - 0.8, str(v), ha='center', va='top',fontsize=10)
 
-    for i, v in enumerate(default_RAM):
-        axs[1].text(num_targets[i], v - 4.2, str(v), ha='center', va='top', fontsize=10)
+    # for i, v in enumerate(default_RAM):
+    #     axs[1].text(num_targets[i], v - 4.2, str(v), ha='center', va='top', fontsize=10)
 
     axs[1].plot(num_targets, default_RAM, marker='o', color=colors[0], label=labels[0])
     axs[1].plot(num_targets, gcnp_RAM, marker='X', markerfacecolor=colors[1], linestyle='', markeredgecolor='black',
@@ -304,7 +304,7 @@ if True:
     # fig.legend(handles, labels, loc='upper center',ncols=4,bbox_to_anchor=(0.5, 1.25))
     plt.tight_layout()
 
-    # if save:
-        # plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
-        # plt.savefig('MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+    if save:
+        plt.savefig('/home/afandi/GitRepos/Bar_graphs/TRAINING_wise_v_prune/MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
+        plt.savefig('MAG_INF_vTargets.pdf', dpi=1200,bbox_inches='tight', format='pdf')
         # plt.show()
